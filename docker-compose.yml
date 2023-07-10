@@ -2,3 +2,5 @@ version: "3"
 services:
   musicbot:
     build: .
+    volumes:
+      - ./config.json:/home/evobot:ro
