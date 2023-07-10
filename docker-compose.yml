@@ -3,4 +3,4 @@ services:
   musicbot:
     build: .
     volumes:
-      - ./config.json:/home/evobot:ro
+      - ./config.json:/home/evobot/config.json:ro
