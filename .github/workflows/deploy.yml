@@ -22,7 +22,8 @@ jobs:
         
         - name: Deploy
           run: |
-            ssh -i ~/.ssh/id_rsa $SERVER_IP "cd $DEPLOY_PATH && git pull origin master && docker-compose up -d --build"
+            ssh -i ~/.ssh/id_rsa $SSH_USER@$SERVER_IP "cd $DEPLOY_PATH && git pull origin master && docker-compose up -d --build"
           env:
             SERVER_IP: ${{ secrets.SERVER_IP }}
             DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+            SSH_USER: ${{ secrets.SSH_USER }}
