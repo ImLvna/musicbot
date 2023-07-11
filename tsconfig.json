@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "outDir": "dist",
+    "outDir": "out",
     "module": "commonjs",
     "target": "es2022",
     "moduleResolution": "node",
@@ -11,7 +11,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "importHelpers": true,
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": [
+      "node_modules/@types",
+      "./types"
+    ],
     "types": ["node"],
     "sourceMap": true,
     "strictPropertyInitialization": false

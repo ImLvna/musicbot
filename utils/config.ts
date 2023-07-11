@@ -4,7 +4,8 @@ import { Config } from "../interfaces/Config";
 let config: Config;
 
 try {
-  config = require("../config.json");
+  let _config = require("../config.json");
+  config = _config;
 } catch (error) {
   config = {
     TOKEN: process.env.TOKEN || "",
@@ -13,7 +14,8 @@ try {
     PRUNING: process.env.PRUNING === "true" ? true : false,
     STAY_TIME: parseInt(process.env.STAY_TIME!) || 30,
     DEFAULT_VOLUME: parseInt(process.env.DEFAULT_VOLUME!) || 100,
-    LOCALE: process.env.LOCALE || "en"
+    LOCALE: process.env.LOCALE || "en",
+    GENIUS_ACCESS_TOKEN: process.env.GENIUS_ACCESS_TOKEN || ""
   };
 }
 

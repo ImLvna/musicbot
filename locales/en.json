@@ -25,7 +25,8 @@
     "description": "Get lyrics for the currently playing song",
     "errorNotQueue": "There is nothing playing.",
     "lyricsNotFound": "No lyrics found for {title}.",
-    "embedTitle": "{title} - Lyrics"
+    "embedTitle": "{title} - Lyrics",
+    "notSetup": "Lyrics are not setup this bot. Ask the owner to set it up!"
   },
   "move": {
     "description": "Move songs around in the queue",
