@@ -9,23 +9,26 @@ import { bot } from "../index";
 
 
 export default {
-  data: new SlashCommandBuilder().setName("lyrics").setDescription(i18n.__("lyrics.description")),
+  data: new SlashCommandBuilder().setName("lyrics").setDescription(i18n.__("lyrics.description"))
+  .addStringOption((option) => option.setName("song").setDescription("The song name").setRequired(false))
+  .addStringOption((option) => option.setName("artist").setDescription("The artist name").setRequired(false)),
   async execute(interaction: ChatInputCommandInteraction) {
     if (!config.GENIUS_ACCESS_TOKEN || config.GENIUS_ACCESS_TOKEN=== "") return interaction.reply(i18n.__("lyrics.errorNotConfigured")).catch(console.error);
     const queue = bot.queues.get(interaction.guild!.id);
 
-    if (!queue || !queue.songs.length) return interaction.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error);
+    if ((!queue || !queue.songs.length) && (!interaction.options.getString('name') || !interaction.options.getString('artist'))) return interaction.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error);
 
     await interaction.reply("⏳ Loading...").catch(console.error);
 
     let lyrics = null;
-    const title = queue.songs[0].title;
+    let title: string = interaction.options.getString('name') || queue!!.songs[0].title;
+    let artist: string = interaction.options.getString('artist') || ' '
 
     try {
       const options = {
         apiKey: config.GENIUS_ACCESS_TOKEN,
         title: title,
-        artist: " ",
+        artist: artist,
         optimizeQuery: true
       };
 
