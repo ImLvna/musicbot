@@ -9,7 +9,7 @@ import { bot } from "../index";
 
 
 export default {
-  data: new SlashCommandBuilder().setName("lyrics2").setDescription(i18n.__("lyrics.description"))
+  data: new SlashCommandBuilder().setName("lyrics").setDescription(i18n.__("lyrics.description"))
   .addStringOption((option) => option.setName("song").setDescription("The song name").setRequired(false))
   .addStringOption((option) => option.setName("artist").setDescription("The artist name").setRequired(false)),
   async execute(interaction: ChatInputCommandInteraction) {
