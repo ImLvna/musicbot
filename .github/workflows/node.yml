@@ -1,16 +1,17 @@
 name: Node.js CI
 
-on:
-  push:
-    branches: [master]
-    paths-ignore:
-      - README.md
-      - .github/**
-      - locales/**
-      - sounds/**
-      - package.json
-  pull_request:
-    branches: [master]
+# on:
+#   push:
+#     branches: [master]
+#     paths-ignore:
+#       - README.md
+#       - .github/**
+#       - locales/**
+#       - sounds/**
+#       - package.json
+#   pull_request:
+#     branches: [master]
+on: workflow_dispatch
 
 jobs:
   build:
