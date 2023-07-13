@@ -16,13 +16,15 @@ export default {
     if (!config.GENIUS_ACCESS_TOKEN || config.GENIUS_ACCESS_TOKEN=== "") return interaction.reply(i18n.__("lyrics.errorNotConfigured")).catch(console.error);
     const queue = bot.queues.get(interaction.guild!.id);
 
-    if ((!queue || !queue.songs.length) && (!interaction.options.getString('name') || !interaction.options.getString('artist'))) return interaction.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error);
+    if ((!queue || !queue.songs.length) && !interaction.options.getString('song') && !interaction.options.getString('artist')) return interaction.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error);
 
     await interaction.reply("⏳ Loading...").catch(console.error);
 
     let lyrics = null;
-    let title: string = interaction.options.getString('name') || queue!!.songs[0].title;
+    let title: string = interaction.options.getString('song') || queue?.songs[0].title || ' ';
     let artist: string = interaction.options.getString('artist') || ' '
+
+    if (title === " " && artist === " ") return interaction.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error)
 
     try {
       const options = {
