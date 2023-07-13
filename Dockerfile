@@ -16,7 +16,6 @@ USER ${USER}
 WORKDIR /home/evobot
 
 COPY --chown=${USER}:${USER} package*.json ./
-RUN npm install -g yarn
 RUN yarn install
 VOLUME [ "/home/evobot" ]
 
