@@ -15,7 +15,7 @@
     "dev": "nodemon index.ts",
     "start": "ts-node index.ts",
     "build": "tsc --build",
-    "prod": "npm run build && node ./out/index.js",
+    "prod": "node ./out/index.js",
     "commit": "cz",
     "watch": "tsc --watch"
   },

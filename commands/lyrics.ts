@@ -24,7 +24,7 @@ export default {
     let title: string = interaction.options.getString('song') || queue?.songs[0].title || ' ';
     let artist: string = interaction.options.getString('artist') || ' '
 
-    if (title === " " && artist === " ") return interaction.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error)
+    if (title === " ") return interaction.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error)
 
     try {
       const options = {
