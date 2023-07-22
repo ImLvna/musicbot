@@ -123,6 +123,14 @@ export class MusicQueue {
     this.processQueue();
   }
 
+  public enqueueNext(song: Song) {
+    if (this.waitTimeout !== null) clearTimeout(this.waitTimeout);
+    this.waitTimeout = null;
+    this.stopped = false;
+    this.songs.splice(1, 0, song)
+    this.processQueue();
+  }
+
   public stop() {
     if (this.stopped) return;
 
