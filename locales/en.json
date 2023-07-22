@@ -166,6 +166,14 @@
     "errorNotValid": "Please use a number between 0 - 100.",
     "result": "Volume set to: **{arg}%**"
   },
+  "exportqueue": {
+    "description": "Export the queue for loading later"
+  },
+  "importqueue": {
+    "description": "Import the queue for later use",
+    "url": "The url of the message you want to import the queue from",
+    "success": "The queue has been imported successfully. Loaded {num} songs."
+  },
   "common": {
     "on": "**on**",
     "off": "**off**",

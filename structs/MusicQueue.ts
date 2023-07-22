@@ -155,6 +155,10 @@ export class MusicQueue {
     }, config.STAY_TIME * 1000);
   }
 
+  public _setStopped(stopped: boolean) {
+    this.stopped = stopped;
+  }
+
   public async processQueue(): Promise<void> {
     if (this.queueLock || this.player.state.status !== AudioPlayerStatus.Idle) {
       return;
