@@ -27,6 +27,8 @@ export default {
   async execute(interaction: ChatInputCommandInteraction) {
     let argSongName = interaction.options.getString("playlist");
 
+    if (!argSongName && interaction.options.getString("song")) argSongName = interaction.options.getString("song"); 
+
     const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
     const { channel } = guildMemer!.voice;
 
