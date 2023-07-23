@@ -17,6 +17,7 @@ import { config } from "../utils/config";
 import { i18n } from "../utils/i18n";
 import { MissingPermissionsException } from "../utils/MissingPermissionsException";
 import { MusicQueue } from "./MusicQueue";
+import { registerCallback } from "../utils/healthcheck";
 
 export class Bot {
   public readonly prefix = config.PREFIX;
@@ -27,6 +28,15 @@ export class Bot {
   public queues = new Collection<Snowflake, MusicQueue>();
 
   public constructor(public readonly client: Client) {
+
+    registerCallback(() => {
+      try {
+        return this.client.isReady();
+      } catch (e) {
+        return false;
+      }
+    });
+
     this.client.login(config.TOKEN);
 
     this.client.on("ready", () => {
